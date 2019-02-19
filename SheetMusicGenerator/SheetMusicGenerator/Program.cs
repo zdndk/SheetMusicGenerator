@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SheetMusicGenerator.Domain.Builder;
+using SheetMusicGenerator.Domain.Pitch;
 using SheetMusicGenerator.Domain.Print;
 
 namespace SheetMusicGenerator
@@ -60,6 +61,7 @@ namespace SheetMusicGenerator
             .Build();
 
             var sheetPrinter = new SheetPrinter();
+            var pitchShifter = new Pitchshifter();
             sheetPrinter.PrintSheet(sheet);
 
             Console.WriteLine();
@@ -75,12 +77,12 @@ namespace SheetMusicGenerator
                
                 if (!input.Equals("+") && !input.Equals("-"))
                 {
-                    Console.WriteLine("Illegal character detected. Please only input '+' or '-' ( or x to exit )");
-                    
+                    Console.WriteLine("Illegal character detected. Please only input '+' or '-' ( or x to exit )");                    
                 }
                 else
                 {
-
+                    pitchShifter.ShiftPitch(input, sheet);
+                    sheetPrinter.PrintSheet(sheet);
                 }
 
                 input = Console.ReadLine();

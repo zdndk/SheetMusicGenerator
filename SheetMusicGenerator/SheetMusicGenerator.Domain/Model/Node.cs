@@ -13,6 +13,6 @@ namespace SheetMusicGenerator.Model
             Value = value;
         }
 
-        public string Value { get; }
+        public string Value { get; internal set; }
     }
 }
