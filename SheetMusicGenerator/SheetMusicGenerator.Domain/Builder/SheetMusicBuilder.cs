@@ -10,23 +10,20 @@ namespace SheetMusicGenerator.Domain.Builder
 {
     public class SheetMusicBuilder : ISheetMusicBuilder
     {
-        private IInternalBarBuilder _barBuilder = null;
+        private IInternalSheetBuilder _sheetBuilder;
         
-        public IBarBuilder AddSheet()
+        public ISheetBuilder AddSheet()
         {
-            if (_barBuilder == null) //effectively map all content to one sheet. Multiple sheets not supported in this version
-                _barBuilder = new BarBuilder(this);
-            return _barBuilder;
+            return _sheetBuilder ?? (_sheetBuilder = new SheetBuilder(this));
         }
 
         public Sheet Build()
         {
             var returnSheet = new Sheet(null);
 
-            while (_barBuilder != null)
+            foreach (var barBuilder in _sheetBuilder.GetBarBuilders())
             {
-                returnSheet.Bars.Add(new Bar(_barBuilder.GetNodes()));
-                _barBuilder = _barBuilder.GetParentBuilder();
+               returnSheet.Bars.Add(new Bar(barBuilder.GetNodes()));
             }
             
             return returnSheet;

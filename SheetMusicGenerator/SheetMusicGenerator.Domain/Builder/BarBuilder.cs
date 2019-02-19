@@ -10,30 +10,15 @@ namespace SheetMusicGenerator.Domain.Builder
 {
     internal class BarBuilder : IInternalBarBuilder
     {
-        private IInternalBarBuilder _previousBarBuilder = null;
-        private ISheetMusicBuilder _sheetMusicBuilder = null;
         private List<Node> _nodes = new List<Node>();
-
-        public IBarBuilder AddBar()
-        {
-            if (_previousBarBuilder == null)
-                return this;
-            return new BarBuilder(this);
-        }
+        private ISheetBuilder _sheetBuilder;
 
         public void AddNodes(IList<Node> nodes)
         {
             if(nodes != null)
+            {
                 _nodes.AddRange(nodes);
-        }
-
-        public ISheetMusicBuilder GetSheetMusicBuilder()
-        {
-            if (_sheetMusicBuilder != null)
-                return _sheetMusicBuilder;
-            if (_previousBarBuilder == null)
-                throw new Exception("Illegal state: No parent bar found, and no sheetmusic builder set.");
-            return _previousBarBuilder.GetSheetMusicBuilder();
+            }
         }
 
         public IList<Node> GetNodes()
@@ -41,29 +26,19 @@ namespace SheetMusicGenerator.Domain.Builder
             return _nodes;
         }
 
-        public IInternalBarBuilder GetParentBuilder()
-        {
-            return _previousBarBuilder;
-        }
-
         public INodeBuilder AddNode(string node)
         {
             return new NodeBuilder(this, node);
         }
 
-        public ISheetMusicBuilder EndSheet()
+        public ISheetBuilder EndBar()
         {
-            return GetSheetMusicBuilder();
+            return _sheetBuilder;
         }
 
-        internal BarBuilder(ISheetMusicBuilder sheetMusicBuilder)
+        internal BarBuilder(ISheetBuilder sheetBuilder)
         {
-            _sheetMusicBuilder = sheetMusicBuilder;
-        }
-
-        internal BarBuilder(IInternalBarBuilder previousBarBuilder)
-        {
-            _previousBarBuilder = previousBarBuilder;
+            _sheetBuilder = sheetBuilder;
         }
     }
 }

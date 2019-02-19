@@ -6,7 +6,6 @@ namespace SheetMusicGenerator.Domain.Builder
     public interface IBarBuilder
     {
         INodeBuilder AddNode(string note);
-        IBarBuilder AddBar();       
-        ISheetMusicBuilder EndSheet();
+        ISheetBuilder EndBar();
     }
 }

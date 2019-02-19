@@ -43,9 +43,12 @@
     <Compile Include="Builder\BarBuilder.cs" />
     <Compile Include="Builder\IBarBuilder.cs" />
     <Compile Include="Builder\IInternalBarBuilder.cs" />
+    <Compile Include="Builder\IInternalSheetBuilder.cs" />
     <Compile Include="Builder\INodeBuilder.cs" />
+    <Compile Include="Builder\ISheetBuilder.cs" />
     <Compile Include="Builder\ISheetMusicBuilder.cs" />
     <Compile Include="Builder\NodeBuilder.cs" />
+    <Compile Include="Builder\SheetBuilder.cs" />
     <Compile Include="Builder\SheetMusicBuilder.cs" />
     <Compile Include="Model\Bar.cs" />
     <Compile Include="Model\Node.cs" />

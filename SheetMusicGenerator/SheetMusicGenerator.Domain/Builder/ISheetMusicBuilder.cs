@@ -5,7 +5,7 @@ namespace SheetMusicGenerator.Domain.Builder
 {
     public interface ISheetMusicBuilder
     {
-        IBarBuilder AddSheet();
+        ISheetBuilder AddSheet();
         Sheet Build();
     }
 }

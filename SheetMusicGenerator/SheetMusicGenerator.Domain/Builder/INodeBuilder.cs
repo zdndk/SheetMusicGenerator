@@ -3,6 +3,6 @@
     public interface INodeBuilder
     {
         INodeBuilder AddNode(string node);
-        IBarBuilder EndBar();
+        ISheetBuilder EndBar();
     }
 }

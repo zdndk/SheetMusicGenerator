@@ -10,8 +10,7 @@ namespace SheetMusicGenerator.Domain.Builder
     internal interface IInternalBarBuilder : IBarBuilder
     {
         void AddNodes(IList<Node> nodes);
-        ISheetMusicBuilder GetSheetMusicBuilder();
         IList<Node> GetNodes();
-        IInternalBarBuilder GetParentBuilder();
+        //IInternalBarBuilder GetParentBuilder();
     }
 }

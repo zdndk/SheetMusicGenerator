@@ -12,10 +12,10 @@ namespace SheetMusicGenerator.Domain.Builder
         private IInternalBarBuilder _barBuilder = null;
         private IList<Node> _nodes = new List<Node>();
 
-        public IBarBuilder EndBar()
+        public ISheetBuilder EndBar()
         {
             _barBuilder.AddNodes(_nodes);
-            return _barBuilder;
+            return _barBuilder.EndBar();
         }
 
         public INodeBuilder AddNode(string node)
