@@ -14,7 +14,7 @@ namespace SheetMusicGenerator.Domain.Builder
         
         public ISheetBuilder AddSheet()
         {
-            return _sheetBuilder ?? (_sheetBuilder = new SheetBuilder(this));
+            return _sheetBuilder ?? (_sheetBuilder = new SheetBuilder(this)); //only one sheet is supported in this version, so the same sheetbuilder is returned once created.
         }
 
         public Sheet Build()
