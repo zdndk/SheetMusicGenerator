@@ -53,6 +53,7 @@
     <Compile Include="Model\Bar.cs" />
     <Compile Include="Model\Node.cs" />
     <Compile Include="Model\Sheet.cs" />
+    <Compile Include="Print\SheetPrinter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

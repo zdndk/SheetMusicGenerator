@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SheetMusicGenerator.Domain.Builder;
+using SheetMusicGenerator.Domain.Print;
 
 namespace SheetMusicGenerator
 {
@@ -58,10 +59,33 @@ namespace SheetMusicGenerator
                 .EndSheet()
             .Build();
 
+            var sheetPrinter = new SheetPrinter();
+            sheetPrinter.PrintSheet(sheet);
+
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine("Press enter to exit.");
-            Console.ReadLine();
+            Console.WriteLine("Enter + to increment pitch, or - to lower the pitch of the nodes.");
+            Console.WriteLine("Enter x to exit.");
+
+            var input = Console.ReadLine();
+            while (!input.Equals("x"))
+            {
+               
+                if (!input.Equals("+") && !input.Equals("-"))
+                {
+                    Console.WriteLine("Illegal character detected. Please only input '+' or '-' ( or x to exit )");
+                    
+                }
+                else
+                {
+
+                }
+
+                input = Console.ReadLine();
+            }
+
         }
     }
 }
