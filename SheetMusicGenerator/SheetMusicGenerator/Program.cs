@@ -14,8 +14,11 @@ namespace SheetMusicGenerator
             var sheet = new SheetMusicBuilder()
                 .AddSheet()
                     .AddBar()
+                        .AddNode("E")
+                        .AddNode("D")
                         .AddNode("C")
-                    .EndBar()
+                        .AddNode("D")
+                    .EndBar()                    
                 .EndSheet()
             .Build();
 
